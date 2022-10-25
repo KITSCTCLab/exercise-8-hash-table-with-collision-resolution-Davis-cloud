@@ -29,7 +29,3 @@ for item in re.split('], |].', input_data):
     insert(HashTable, int(data[0]), data[1])
 
 display_hash (HashTable)
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
