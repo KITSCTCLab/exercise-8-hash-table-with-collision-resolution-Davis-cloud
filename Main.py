@@ -1,46 +1,35 @@
-from typing import List
+import re
 
-def merge(arr: [int], l: int, mid: int, r: int) -> [int]:
-  l1 = arr[l:mid]
-  l2 = arr[mid:r]
-  i = 0
-  j = 0
-  k = l
-  while i < len(l1) and j < len(l2):
-    if l1[i] < l2[j]:
-      arr[k] = l1[i]
-      i += 1
-    else:
-      arr[k] = l2[j]
-      j += 1
-    k += 1
-  while i < len(l1):
-    arr[k] = l1[i]
-    i += 1
-    k += 1
-  while j < len(l2):
-    arr[k] - l2[j]
-    j += 1
-    k += 1
+def display_hash(hashtable) -> None:
+	for i in range(len(hashtable)):
+		print(i, end = " ")
+		for j in hashtable[i]:
+			print("-->", end = " ")
+			print(j, end = " ")
+		print()
+		
+def Hashing(keyvalue) -> int:
+	return keyvalue % len(HashTable)
 
-def merge_sort_ftn(arr, l, r) -> None:
-  if r - l >= 2:
-    mid = l + (r - l) // 2
-    merge_sort_ftn(arr, l, mid)
-    merge_sort_ftn(arr, mid, r)
-    merge(arr, l, mid, r)
-  
-def merge_sort(data) -> None:
-  merge_sort_ftn(data, 0, len(data))
+def insert(Hashtable, keyvalue, value) -> None:
+	hash_key = Hashing(keyvalue)
+	Hashtable[hash_key].append(value)
 
 
-# Do not change the following code
+# Do not edit the following code
+hash_table_size = int(input())
+# Create Hashtable as a list of list.
+HashTable = [[] for _ in range(hash_table_size)]
 input_data = input()
 data = []
-for item in input_data.split(', '):
-  if item.isnumeric():
-    data.append(int(item))
-  elif item.lstrip("-").isnumeric():
-    data.append(int(item))
-merge_sort(data)
-print(data)
+for item in re.split('], |].', input_data):
+  item = item[1:]
+  data = item.split(', ')
+  if len(data) > 1:
+    insert(HashTable, int(data[0]), data[1])
+
+display_hash (HashTable)
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
